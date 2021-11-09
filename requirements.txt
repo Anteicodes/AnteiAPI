@@ -1,3 +1,4 @@
+AnteiAPI
 sphinx
 requests
 sphinx-rtd-theme
