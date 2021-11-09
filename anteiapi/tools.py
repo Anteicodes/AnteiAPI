@@ -13,7 +13,9 @@ from .exception import (
     Limit
 )
 def get_binary_from_string(file:Union[BytesIO, str]):
-    "file: path|url|BytesIO"
+    """
+    :param file: file path / BytesIO Object
+    """
     if isinstance(file, BytesIO):
         return file
     elif os.path.isfile(file):
@@ -23,7 +25,9 @@ def get_binary_from_string(file:Union[BytesIO, str]):
     raise FileNotFound(file.__str__())
 
 def resp_checker(resp:requests.models.Response)->requests.models.Response:
-    print(resp)
+    """
+    :param resp: requests
+    """
     if resp.status_code == 200:
         return resp
     err = {

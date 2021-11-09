@@ -1,5 +1,8 @@
 class TafsirMimpi:
-    def __init__(self, js) -> None:
+    """
+    :param js:
+    """
+    def __init__(self, js: dict) -> None:
         self.result = js['hasil']
         self.count = js['total']
     def __getitem__(self, x):
