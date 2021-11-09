@@ -13,5 +13,5 @@ To use AnteiAPI, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install anteiapi
+   (.venv) $ pip install AnteiAPI
 
