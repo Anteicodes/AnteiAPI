@@ -15,6 +15,7 @@ setup(
   keywords = ['API','anteicodes'], 
   install_requires=[           
           'requests',
+          'filetype'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      
