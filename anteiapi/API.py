@@ -11,6 +11,7 @@ from requests import Session
 from .endpoints import (
     ATTP,
     REMOVEBG,
+    SIMSIMI,
     TIKOK,
     TAFSIR_MIMPI,
     PHLOGO,
@@ -92,8 +93,16 @@ class AnteiAPI(Session):
         :param text: text
         """
         return FileContent(resp_checker(self.get(self.BASE_URL+ATTP)).content)
+    def simsimi(self, text: str, lang: str = "id")->dict:
+        """
+        chatbot with simsimi
+
+        :param text: message
+        :param lang: language ISO 639-1 Code
+        """
+        return resp_checker(self.get(self.BASE_URL+SIMSIMI, params={'text':text, 'lang':lang})).json()
     def __repr__(self) -> str:
-        return f'<({self.apikey[:7]}...)>'
+        return f'<({self.apikey[:13]}...)>'
 
 class Login(requests.Session):
     """
