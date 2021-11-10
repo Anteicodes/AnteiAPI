@@ -1,4 +1,4 @@
-AnteiAPI
+git+https://github.com/Anteicodes/AnteiAPI
 sphinx
 requests
 sphinx-rtd-theme
