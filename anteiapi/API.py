@@ -116,7 +116,7 @@ class Login(requests.Session):
         self.access_token =  re.findall(r'AccessToken \= \"(.*?)\"', dashboard)[0]
     
     @property
-    def AnteiAPI(self):
+    def AnteiAPI(self)->AnteiAPI:
         """
         API
         """
