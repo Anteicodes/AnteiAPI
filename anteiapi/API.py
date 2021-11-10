@@ -1,3 +1,4 @@
+import json
 import requests
 from html import unescape
 from functools import namedtuple
@@ -129,13 +130,16 @@ class Login(requests.Session):
     
     @property
     def ip(self):
-        return [IP(x, self) for x in unescape(re.findall(r'htmlDecode\(\"(.*?)\"\)',self.get('https://antei.codes/dashboard').text)[0])]
+        """
+        get list of allowed ip
+        """
+        return [IP(x, self) for x in json.loads(unescape(re.findall(r'htmlDecode\(\"(.*?)\"\)',self.get('https://antei.codes/dashboard').text)[0]))]
 
     def add_ip(self, ip: str)-> bool:
         """
         :param ip: str
         """
-        status = self.get('https://antei.codes/api-ip', data={'AccessToken':self.access_token, 'action':'add', 'ip':ip}).json()
+        status = self.post('https://antei.codes/api-ip', data={'AccessToken':self.access_token, 'action':'add', 'ip':ip}).json()
         if not status['status']:
             raise IpError(status.get('msg','the problem is unknown'))
         return status['status']

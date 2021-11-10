@@ -57,7 +57,7 @@ class IP:
         """
         delete ip from Ip Manager
         """
-        js=self.session.post('https://antei.codes', data={'AccessToken':self.session.access_token, 'action':'remove', 'ip':self.ip}).json()
+        js=self.session.post('https://antei.codes/api-ip', data={'AccessToken':self.session.access_token, 'action':'remove', 'ip':self.ip}).json()
         if not js['status']:
             raise IpError(js.get('msg','the problem is unknown'))
         return js['status']
