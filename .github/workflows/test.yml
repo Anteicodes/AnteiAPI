@@ -1,0 +1,26 @@
+name: Unittest
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    startegy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Installing Library
+      run: |
+        python setup.py install --user
+    - name: Testing
+      run: |
+        python -m anteiapi.test
