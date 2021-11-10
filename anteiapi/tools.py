@@ -3,6 +3,8 @@ import re
 import os
 from typing import Union
 from io import BytesIO
+
+from requests.api import delete
 from .exception import (
     FileNotFound,
     ParameterInvalid,
@@ -10,7 +12,8 @@ from .exception import (
     AccessDenied,
     ApikeyNotValid,
     UrlNotValid,
-    Limit
+    Limit,
+    IpError
 )
 def get_binary_from_string(file:Union[BytesIO, str]):
     """
@@ -40,3 +43,23 @@ def resp_checker(resp:requests.models.Response)->requests.models.Response:
     if err:
         raise err
     return resp
+
+class IP:
+    """
+    :param IP: str
+    :param session: Session Object
+    """
+    def __init__(self, IP, session) -> None:
+        self.ip = IP
+        self.session = session
+    @property
+    def delete(self):
+        """
+        delete ip from Ip Manager
+        """
+        js=self.session.post('https://antei.codes', data={'AccessToken':self.session.access_token, 'action':'remove', 'ip':self.ip}).json()
+        if not js['status']:
+            raise IpError(js.get('msg','the problem is unknown'))
+        return js['status']
+    def __repr__(self) -> str:
+        return f'<{self.ip}>'

@@ -12,3 +12,9 @@ class ParameterInvalid(Exception):
     pass
 class FileNotFound(Exception):
     pass
+class EmailPasswordAreWrong(Exception):
+    pass
+class IpError(Exception):
+    pass
+class AccountError(Exception):
+    pass

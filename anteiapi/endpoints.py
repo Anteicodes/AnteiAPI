@@ -53,7 +53,6 @@
 # ='estetik'
 # ='simsimi'
 # ='result'
-BASE_URL = 'http://127.0.0.1:8000/'
 SAUCENAO = 'saucenao'
 TIKOK = 'tiktok'
 TAFSIR_MIMPI = 'tafsirmimpi'

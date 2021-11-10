@@ -5,6 +5,6 @@ from .models import (
     TafsirMimpi, 
     Tiktok
 )
-from .API import AnteiAPI
+from .API import AnteiAPI, Login
 
-__all__ = ['AnteiAPI', 'File', 'FileContent', 'DownloadUrl', 'TafsirMimpi', 'Tiktok']
+__all__ = ['AnteiAPI', 'File', 'FileContent', 'DownloadUrl', 'TafsirMimpi', 'Tiktok', 'Login']
