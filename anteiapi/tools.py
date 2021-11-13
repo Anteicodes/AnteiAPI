@@ -6,11 +6,13 @@ from io import BytesIO
 
 from requests.api import delete
 from .exception import (
+    ApikeyEmpty,
     FileNotFound,
     ParameterInvalid,
     ParameterIsEmpty,
     AccessDenied,
     ApikeyNotValid,
+    ProblemNotRecognized,
     UrlNotValid,
     Limit,
     IpError
@@ -38,6 +40,8 @@ def resp_checker(resp:requests.models.Response)->requests.models.Response:
         402:Limit(resp.json().get('msg','')),
         403:AccessDenied(resp.json().get('msg','')),
         405:ApikeyNotValid(resp.json().get('msg','')),
+        406:ProblemNotRecognized(resp.json().get('msg','')),
+        407:ApikeyEmpty(resp.json().get('msg','')),
         409:ParameterInvalid(resp.json().get('msg',''))
     }.get(resp.status_code)
     if err:

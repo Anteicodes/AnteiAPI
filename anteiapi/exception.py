@@ -18,3 +18,7 @@ class IpError(Exception):
     pass
 class AccountError(Exception):
     pass
+class ApikeyEmpty(Exception):
+    pass
+class ProblemNotRecognized(Exception):
+    pass
